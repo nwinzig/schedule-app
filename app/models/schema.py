@@ -38,6 +38,11 @@ class Employee(db.Model, UserMixin):
 
 # office table
 class Office(db.Model):
+    __tablename__ = 'offices'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     employees = db.relationship('Employee', backref='office', lazy=True)
@@ -51,6 +56,11 @@ class Office(db.Model):
 
 # shift table
 class Shift(db.Model):
+    __tablename__ = 'shifts'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
     hours = db.Column(db.Integer, nullable=False)
