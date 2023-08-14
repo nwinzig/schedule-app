@@ -17,7 +17,7 @@ def seed_employees():
     db.session.commit()
 
 
-def undo_users():
+def undo_employees():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
