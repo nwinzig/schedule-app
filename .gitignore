@@ -1,1 +1,8 @@
 internalREADME.md
+.env
+.flaskenv
+app/dev.db
+dev.db
+.dev.db
+__pycache__/
+.venv
