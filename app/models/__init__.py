@@ -1,3 +1,3 @@
 from .db import db
-from .user import User
+from .schema import Employee, Shift, Office
 from .db import environment, SCHEMA

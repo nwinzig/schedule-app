@@ -13,6 +13,8 @@ class Employee(db.Model, UserMixin):
     name = db.Column(db.String(40), nullable = False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    office_id = db.Column(db.Integer, db.ForeignKey('office.id'), nullable=False)
+    shifts = db.relationship('Shift', backref='employee', lazy=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     @property
@@ -29,6 +31,7 @@ class Employee(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'name': self.name,
             'username': self.username,
             'email': self.email
         }
