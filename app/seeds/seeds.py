@@ -33,9 +33,14 @@ def seed_offices():
     office3 = Office(name='West Branch')
     office4 = Office(name= 'East Branch')
 
+    db.session.add(office)
+    db.session.add(office2)
+    db.session.add(office3)
+    db.session.commit()
+
 def undo_offices():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.offices RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM offices"))
 
@@ -48,9 +53,14 @@ def seed_shifts():
     shift2 = Shift(date='2023-08-16', hours=6, employee_id=2)
     shift3 = Shift(date='2023-08-17', hours=7, employee_id=3)
 
+    db.session.add(shift)
+    db.session.add(shift2)
+    db.session.add(shift3)
+    db.session.commit()
+
 def undo_shifts():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.shifts RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM shifts"))
 
