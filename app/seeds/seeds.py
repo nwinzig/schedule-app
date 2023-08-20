@@ -1,6 +1,6 @@
 from app.models import db, Employee, environment, SCHEMA, Shift, Office
 from sqlalchemy.sql import text
-from datetime import date
+from datetime import date, time
 
 # employee seeds
 def seed_employees():
@@ -49,9 +49,9 @@ def undo_offices():
 
 # shift seeds
 def seed_shifts():
-    shift = Shift(date=date(2023,8,15), hours=8, employee_id=1)
-    shift2 = Shift(date=date(2023,8,16), hours=6, employee_id=2)
-    shift3 = Shift(date=date(2023,8,17), hours=7, employee_id=3)
+    shift = Shift(date=date(2023,8,15),start_time=time(9,0), end_time=time(17,0),hours=8, employee_id=1)
+    shift2 = Shift(date=date(2023,8,16),start_time=time(9,0), end_time=time(15,0), hours=6, employee_id=2)
+    shift3 = Shift(date=date(2023,8,17),start_time=time(9,0), end_time=time(16,0), hours=7, employee_id=3)
 
     db.session.add(shift)
     db.session.add(shift2)

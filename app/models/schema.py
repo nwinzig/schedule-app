@@ -69,6 +69,8 @@ class Shift(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
+    start_time = db.Column(db.Time, nullable=False)
+    end_time = db.Column(db.Time, nullable=False)
     hours = db.Column(db.Integer, nullable=False)
 
     # relationship
@@ -78,6 +80,8 @@ class Shift(db.Model):
         return {
             'id': self.id,
             'date': self.date,
+            'start_time': self.start_time,
+            'end_time': self.end_time,
             'hours': self.hours,
             'employee_id': self.employee_id
         }
